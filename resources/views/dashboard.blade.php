@@ -6,7 +6,9 @@
             <h1 class="d-block">CRUD Laravel Y VueJs</h1>
         </div>
         <div class="col-md-7">
-            <a href="#" class="btn btn-primary float-right">Nueva Tarea</a>
+            <a href="#" class="btn btn-primary float-right" data-toggle="modal" data-target="#create">
+                Nueva Tarea
+            </a>
             <table class="table table-hover table-striped">
                 <thead>
                     <tr>
@@ -28,6 +30,8 @@
                     </tr>
                 </tbody>
             </table>
+
+            @include('create')
         </div>
         <div class="col-md-5">
             <pre>
