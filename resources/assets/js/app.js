@@ -28,8 +28,16 @@ new Vue({
 			$('#edit').modal('show');
 		},
 
-		updateKeeps: function () {
-			alert('estoy editando');
+		updateKeeps: function (id) {
+			var url = 'task/' + id;
+			axios.put(url, this.fillkeep).then(response => {
+				this.getKeeps();
+				this.fillkeep = {'id': '', 'keep': ''};
+				this.errors = [];
+				$('#edit').modal('hide');
+			}).catch(error => {
+				this.errors = error.response.data
+			});
 		},
 
 		deleteKeeps: function(keep) {
