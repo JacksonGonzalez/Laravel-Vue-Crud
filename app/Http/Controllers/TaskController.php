@@ -13,10 +13,22 @@ class TaskController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $tasks = Task::orderBy('id', 'DESC')->get();
-
-        return $tasks;
+    {   
+        // si solo quiero mostrar en vez de paginate uso get
+        $tasks = Task::orderBy('id', 'DESC')->paginate(10);
+        // return $tasks;
+        return [
+            'paginate' => [
+                'total'         => $tasks->total(), //lista todo
+                'current_page'  => $tasks->currentPage(), //pagina actual
+                'per_page'      => $tasks->perPage(), //por pagina
+                'last_page'     => $tasks->lastPage(), //ultima pagina
+                'from'          => $tasks->firstItem(), //desde
+                'to'            => $tasks->lastPage(), //hasta ultimo elemento
+                
+            ],
+            'tasks' => $tasks
+        ];
     }
 
 

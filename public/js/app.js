@@ -13026,7 +13026,7 @@ new Vue({
 		getKeeps: function(){
 			var urlKeeps = 'task';  //recopilamos la ruta
 			axios.get(urlKeeps).then(response => { //activamos axios con la ruta para traer los datos
-				this.keeps = response.data //actualizamos la data de keeps[]
+				this.keeps = response.data.tasks.data //actualizamos la data de keeps[]
 			});
 		},
 
