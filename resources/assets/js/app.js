@@ -7,7 +7,9 @@ new Vue({
 	},
 
 	data: {
-		keeps: []
+		keeps: [],
+		newKeep: '',
+		errors: []
 	},
 
 	methods: {
@@ -22,8 +24,22 @@ new Vue({
 			var url = 'task/' + keep.id;  //recopilamos la ruta de borar
 			axios.delete(url).then(response => {  //activamos axios para la ruta de delete ->eliminamos
 				this.getKeeps(); //listamos  con la funcion getKeeps()  ->listamos
-				toastr.success('Tarea eliminada correctamente', 'Confirmación'); //mensaje que confirma de que ha borrado
 			});
+		},
+
+		createKeeps: function() {
+			var url = 'task';
+			axios.post(url , {
+				keep: this.newKeep
+			}).then(response => {
+				this.getKeeps();
+				this.newKeep = '';
+				this.errors = [];
+				$('#create').modal('hide');
+			}).catch(error => {
+				this.errors = error.response.data
+			});
+
 		}
 	}
 });
