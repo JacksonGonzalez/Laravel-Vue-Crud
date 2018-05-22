@@ -22,7 +22,7 @@
                         <td>@{{ keep.id }}</td>
                         <td>@{{ keep.keep }}</td>
                         <td class="10px">
-                            <a href="#" class="btn btn-warning btn-sm text-white">Editar</a>
+                            <a href="#" class="btn btn-warning btn-sm text-white" v-on:click.prevent="editKeeps(keep)">Editar</a>
                         </td>
                         <td class="10px">
                             <a href="#" class="btn btn-danger btn-sm text-white" v-on:click.prevent="deleteKeeps(keep)">Eliminar</a>
@@ -32,6 +32,7 @@
             </table>
 
             @include('create')
+            @include('edit')
         </div>
         <div class="col-md-5">
             <pre>
