@@ -15,7 +15,7 @@ class TaskController extends Controller
     public function index(Request $request)
     {   
         // si solo quiero mostrar en vez de paginate uso get
-        $tasks = Task::orderBy('id', 'DESC')->paginate(8);
+        $tasks = Task::orderBy('id', 'DESC')->paginate(7);
         // return $tasks;
         return [
             'pagination' => [
